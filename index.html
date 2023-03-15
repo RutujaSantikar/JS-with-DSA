@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Javascript Data structre and algorithams Udemy</h1>
+    <script>
+      // 1.Frequency Counter
+      // write a function called same, which accepts two array
+      /* the function should return true if every value in the
+           array has its corresponding value squared in the second array
+           the frequency of values must be same
+           same([1,2,3],[4,1,9])  true
+           same([1,2,3],[1,9])  false
+           same([1,2,1],[4,4,1]) false */
+
+      function same(arr1, arr2) {
+        //  je donhi array chi length equal nasel tr false return kr
+        if (arr1.length !== arr2.length) {
+          return false;
+        }
+        //    arr1 vr for loop lav
+        for (let i = 0; i < arr1.length; i++) {
+          //  correctIndex variable ghe donhi arr index match karnyasathi
+          //  mg arr2 ch index ha arr1 chya index cha square ahe ka check kar
+          let correctIndex = arr2.indexOf(arr1[i] ** 2);
+          // n if not present
+          if (correctIndex === -1) {
+            return false;
+          }
+          console.log(arr2);
+          //   remove item from array
+          //   arr2.splice(correctIndex,1)
+        }
+        return true;
+      }
+      console.log(same([1, 2, 3], [4, 1, 9]));
+
+      //   2 . Anagrams
+      /* Given two strings, write a function to determine if the
+          second string is an anagram of the first.An anagarm
+           is a word,phrase, or name formed by reaaraanging the
+            letters of another such as cinema, formed frm iceman
+           validAnagram('','') true
+           validAnagram('aaz','zza') false
+           validAnagram('anagram','nagaram') true
+           validAnagram('rat','car') false*/
+
+           function validAnagram(str1,str2){
+            // both string length equal nasel tr return false
+             if(str1.length !== str2.length){
+                return false;
+             }
+            //  create object
+             const lookup = {}
+            //  for loop on 1st string str1
+              for(let i = 0; i<str1.length ; i++){
+                // lookup object mde str1[i] present asel tr add kr
+                if(lookup[str1[i]]){
+                    lookup[str1[i]] += 1; 
+                }
+                // nasel tr 1 assing kr
+                else{
+                    lookup[str1[i]] = 1
+                }
+
+              }
+            //   for loop on 2nd string str2
+             for(let i = 0; i < str2.length; i++){
+                // lookup object mde str2[i] present nasel tr return false
+                 if(! lookup[str2[i]]){
+                    return false;
+                 }
+                 else {
+                    lookup[str2[i]] -= 1
+                 }
+
+             }
+             return true
+
+           }
+           console.log(validAnagram("aaz","zza"));
+    </script>
+  </body>
+</html>
